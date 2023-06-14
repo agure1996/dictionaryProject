@@ -9,7 +9,7 @@ public class Main {
 
         dictionary.loadRecords();
 
-        System.out.println(dictionary.findWord("run"));
+        System.out.println(dictionary.findWord("shuffle"));
 
         dictionary.saveWord();
     }

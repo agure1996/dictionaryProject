@@ -1,2 +1,2 @@
-run, to move quickly
-snooze, to sleep
+run: to move quickly
+snooze: to sleep

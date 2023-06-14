@@ -26,7 +26,7 @@ public class Dictionary {
 
         /** we will then parse (basically read then break into smaller pieces) 
          * the line and spit it where the ',' are (refer to dictionary.txt) */
-        String[] parsedLine = line.split(",");
+        String[] parsedLine = line.split(":");
         String wordName = parsedLine[0];
         String definition = parsedLine[1];
            
@@ -85,17 +85,17 @@ public class Dictionary {
 
     public void saveWord() throws Exception{
 
-        String filename= "newdictionary.txt";
-        FileWriter fw = new FileWriter(filename);
+        String filename= "dictionary.txt";
+        FileWriter fw = new FileWriter(filename,true);
         BufferedWriter writer = new BufferedWriter(fw);
 
         for(String input : dictionary.keySet()){
-            Words newWord = dictionary.get(input);
+            // Words newWord = dictionary.get(input);
 
-            writer.write(newWord.name);
-            writer.write(":");
-            writer.write(newWord.meaning);
-            writer.write("\n");
+            // writer.write(newWord.name);
+            // writer.write(":");
+            // writer.write(newWord.meaning);
+            // writer.write("\n");
         }
         writer.close();
     }

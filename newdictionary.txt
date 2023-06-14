@@ -1,2 +1,0 @@
-snooze: to sleep
-run: to move quickly
