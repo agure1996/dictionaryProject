@@ -1,2 +1,4 @@
 run: to move quickly
 snooze: to sleep
+Abbas: a Person
+A: the first letter of the alphabet

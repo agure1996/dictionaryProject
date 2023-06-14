@@ -6,62 +6,62 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 public class Dictionary {
-    
 
-    Map<String,Words> dictionary = new HashMap<>();
+    Map<String, Words> dictionary = new HashMap<>();
 
-    public void loadRecords() throws  Exception{
-        
+    public void loadRecords() throws Exception {
 
-        /** we are going to read the file using buffered reader
+        /**
+         * we are going to read the file using buffered reader
          * 
          */
-        String filename= "dictionary.txt";
+        String filename = "dictionary.txt";
         BufferedReader br = new BufferedReader(new FileReader(filename));
-        
-        for(String line = br.readLine(); line != null; line= br.readLine()){
 
-        /** we will then parse (basically read then break into smaller pieces) 
-         * the line and spit it where the ',' are (refer to dictionary.txt) */
-        String[] parsedLine = line.split(":");
-        String wordName = parsedLine[0];
-        String definition = parsedLine[1];
-           
-        /** we now instantiate the Words class here
-         * 
-         * then put the parsed values in their respective places in the constructor 
-         * (to understand the constructor of words refer to words class)
-         */
+        for (String line = br.readLine(); line != null; line = br.readLine()) {
 
-        Words words = new Words(wordName, definition);
+            /**
+             * we will then parse (basically read then break into smaller pieces)
+             * the line and spit it where the ',' are (refer to dictionary.txt)
+             */
+            String[] parsedLine = line.split(":");
+            String wordName = parsedLine[0];
+            String definition = parsedLine[1];
 
-        /** We then put the wordName into the Key for Words  */
-        this.dictionary.put(wordName,words); 
-         
-        }       
-           /**Close the reader now */
-            br.close();   
+            /**
+             * we now instantiate the Words class here
+             * 
+             * then put the parsed values in their respective places in the constructor
+             * (to understand the constructor of words refer to words class)
+             */
+
+            Words words = new Words(wordName, definition);
+
+            /** We then put the wordName into the Key for Words */
+            this.dictionary.put(wordName, words);
+
+        }
+        /** Close the reader now */
+        br.close();
     }
-    
-        
-
 
     /** we are going to find a word */
-    public String findWord(String word){ 
-       
+    public String findWord(String word) {
 
-        /** we will take an input and loop through our dictionary map for the key value
-         * we look for key value because if you remember above we assigned the wordName to
+        /**
+         * we will take an input and loop through our dictionary map for the key value
+         * we look for key value because if you remember above we assigned the wordName
+         * to
          * the K:V of Words Object which is part of a dictionary Hashmap
          */
-        for (String input : dictionary.keySet()){
+        for (String input : dictionary.keySet()) {
             /* if we find a word that matches the input */
-            if(input.equals(word)){
+            if (input.equals(word)) {
 
-                /* create a new string that will be used to get the definition of the word that matches the input
+                /*
+                 * create a new string that will be used to get the definition of the word that
+                 * matches the input
                  * 
                  * and return the meaning
                  */
@@ -75,29 +75,40 @@ public class Dictionary {
 
     }
 
-
-    /** Now how about we add a new word
+    /**
+     * Now how about we add a new word
      * 
-     * to write the new word we might create a new text file. . . 
-     * or we can just append our already existing one, to do this we should use a filewriter with our bufferedwriter
+     * to write the new word we might create a new text file. . .
+     * or we can just append our already existing one, to do this we should use a
+     * filewriter with our bufferedwriter
      * otherwise its going to just overwrite our whole file
      */
 
-    public void saveWord() throws Exception{
+    public void saveWord(String newWord, String newMeaning) throws Exception {
 
-        String filename= "dictionary.txt";
-        FileWriter fw = new FileWriter(filename,true);
+        String filename = "dictionary.txt";
+        FileWriter fw = new FileWriter(filename, true);
         BufferedWriter writer = new BufferedWriter(fw);
 
-        for(String input : dictionary.keySet()){
-            // Words newWord = dictionary.get(input);
+       
+           
+           if (!dictionary.containsKey(newWord)) {
 
-            // writer.write(newWord.name);
-            // writer.write(":");
-            // writer.write(newWord.meaning);
-            // writer.write("\n");
-        }
+                writer.write("\n");
+                writer.write(newWord);
+                writer.write(":" + "\s");
+                writer.write(newMeaning);
+
+            } 
+            else {
+                System.out.println("Your word exists in the dictionary already!!");
+                System.out.println(findWord(newWord));
+                
+            }
+
+        
+
         writer.close();
     }
-    
+
 }

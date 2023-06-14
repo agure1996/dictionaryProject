@@ -9,5 +9,7 @@ public class Words {
         this.name = name;
         this.meaning = meaning;
     }
+
+    
     
 }

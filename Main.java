@@ -7,11 +7,14 @@ public class Main {
 
         Dictionary dictionary = new Dictionary();
 
-        dictionary.loadRecords();
+       dictionary.loadRecords();
 
-        System.out.println(dictionary.findWord("shuffle"));
+        System.out.println(dictionary.findWord("snooze"));
 
-        dictionary.saveWord();
+        //Just a test to see if it adds
+        // dictionary.saveWord("A", "the first letter of the alphabet");
+
+     
     }
     
 }
